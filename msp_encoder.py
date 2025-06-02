@@ -2,7 +2,7 @@ import pyautogui
 import keyboard
 import time
 import random
-letters="abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ.,?"
+letters=" ABCDEFGHIJKLMNOPQRSTUVWXYZ.,?abcdefghijklmnopqrstuvwxyz"
 color_y = 120
 color_x = 1091
 x,y=40,279
