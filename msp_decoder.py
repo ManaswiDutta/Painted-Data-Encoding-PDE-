@@ -1,49 +1,22 @@
-import pyautogui
-import keyboard
-import time
-import random
+from PIL import Image, ImageDraw
 letters=" ABCDEFGHIJKLMNOPQRSTUVWXYZ.,?abcdefghijklmnopqrstuvwxyz"
-output = ""
-x,y=40,279
-print("press p to start...")
-number = 1
-bin_srt = ""
-black = pyautogui.pixel(1091, 120)
-while number ==1:
-    if keyboard.is_pressed('p'):
-        time.sleep(0.06)
-        while number==1:
-            bin_srt = ""
+data = ""
+img = Image.open("trial2.png")
+x,y=0,0
+while img.getpixel((x,y)) != (255, 255, 255):
+    r, g, b = img.getpixel((x,y))
+    dec = (r * 65536) + (g * 256) + b
+    a = dec // 262144
+    dec = dec % 262144
+    b = dec // 4096
+    dec = dec % 4096
+    c = dec // 64
+    d = dec % 64
+    data += letters[a] + letters[b] + letters[c] + letters[d]
+    if y==144:
+        x+=1
+        y=0
+    else:
+        y+=1
 
-            for _ in range(6):
-                if pyautogui.pixel(x, y) == black:
-                    bin_srt += "1"
-                else:
-                    bin_srt += "0"
-
-                    # Move to next pixel down, then right after 313
-                if y == 313:
-                    x += 1
-                    y = 279
-                    pyautogui.moveTo(x, y)                    
-                    # time.sleep(0.1)  
-                else:
-                    y += 1
-
-                    # time.sleep(0.1)
-            index = int(bin_srt,2)
-            output=output+letters[index]
-            index=0
-               
-            if keyboard.is_pressed('esc'):
-                number+=1
-                print("exiting....")
-
-    elif keyboard.is_pressed('esc'):
-        number+=1
-        print("exiting....")
-
-
-print("the output is:   " + output)
-
-
+print(data)
