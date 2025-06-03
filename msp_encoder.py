@@ -1,41 +1,34 @@
-import pyautogui
-import keyboard
-import time
-import random
+from PIL import Image, ImageDraw
 letters=" ABCDEFGHIJKLMNOPQRSTUVWXYZ.,?abcdefghijklmnopqrstuvwxyz"
-color_y = 120
-color_x = 1091
-x,y=40,279
 
-data=str(input("enter your text:  "))
-print("press p to start...")
-number = 1
-while number ==1:
-    if keyboard.is_pressed('p'):
-        for letter in data :
-            index=letters.find(letter)
-            binary=format(index,'06b')
-            bin_srt=str(binary)
-            for bit in bin_srt:
-                if bit=="1":
-                    pyautogui.click(x,y)
-                    if y==313:
-                        x+=1
-                        y=279
-                    else:
-                        y+=1
-                else:
-                    if y==313:
-                        x+=1
-                        y=279
-                    else:
-                        y+=1
-    elif keyboard.is_pressed('esc'):
-        number+=1
+img = Image.new("RGB", (144, 144), (255, 255, 255))
+draw = ImageDraw.Draw(img) 
+data = str(input("enter your text:  "))
+if len(data) % 4 != 0:
+    data+= " " * (4 - len(data) % 4)  # Padding to make length a multiple of 4
+x,y = 0,0
+dec = 0
+p = 3
+for char in data:
+    index = letters.find(char)
+    if p != 0:
+        dec += index*(64**p)
+        p-=1
+    else:
+        dec += index
+        p = 3
+        a = dec // 65536
+        dec = dec % 65536
+        b= dec // 256
+        c = dec % 256
 
-
+        draw.point((x,y),fill =(a,b,c) )
+        if y==144:
+            x+=1
+            y=0
+        else:
+            y+=1
+        dec = 0
 
 
-# if keyboard.is_pressed('esc'):
-print("exiting...")
-    
+img.save("trial2.png")
