@@ -1,6 +1,6 @@
 # Painted-Data-Encoding-PDE-
 <p>PDE can transform string data and turn it into a pixel art. This can also be used to decrypt the string from a given pixel art</p>
-<p>the code is now updated to hold upto 82944 strings</p>
+<p>the code is now updated to hold upto any lenght of strings</p>
 
 <h3>How to use</h3>
 
