@@ -1,6 +1,6 @@
-# Painted-Data-Encoding-PDE-
+# Painted-Data-Encoding-PDE- V.5
 <p>PDE can transform string data and turn it into a pixel art. This can also be used to decrypt the string from a given pixel art</p>
-<p>the code is now updated to hold upto any lenght of strings</p>
+<p>the code is now updated to hold any lenght of strings</p>
 
 <h3>How to use</h3>
 
@@ -8,11 +8,11 @@
 
 <h3>How it works</h3>
 
-<p>the RGB values of each pixel when treated as a 3 digit number can be converted to a 4 digit (64 base) number therefore each number pixel can hold upto 4 strings</p>
+<p>the rgb value of each pixel coresponds with a unique unicode charecter and therefore each pixel can hold upto 3 charecters</p>
 
 
 <h3>updates</h3>
 
 <p>
-the code can now deal with data of any lenght.  there is no limit....
+*NOTE* : spacial unicode charecters and emojis are not compatable yet
 </p>
